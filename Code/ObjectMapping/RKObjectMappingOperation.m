@@ -356,7 +356,7 @@ BOOL RKObjectIsValueEqualToValue(id sourceValue, id destinationValue) {
     for (RKObjectRelationshipMapping* relationshipMapping in [self relationshipMappings]) {
         id value = [self.sourceObject valueForKeyPath:relationshipMapping.sourceKeyPath];
         
-        if (value == nil || value == [NSNull null] || [value isEqual:[NSNull null]]) {
+        if (value == nil || value == [NSNull null] || [value isEqual:[NSNull null]] || [value isEqual:[NSNumber numberWithInt:0]]) {
             RKLogDebug(@"Did not find mappable relationship value keyPath '%@'", relationshipMapping.sourceKeyPath);
             
             // Optionally nil out the property
